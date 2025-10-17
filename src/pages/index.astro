@@ -4,278 +4,174 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="R-Fluent - Coming Soon">
-  <main class="coming-soon-container">
-    <div class="liquid-glass-bg"></div>
-    <div class="content">
-      <h1 class="coming-soon-text">Coming Soon</h1>
-      <div class="logo-section">
-        <div class="r-logo">
-          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="50" cy="50" r="45" fill="none" stroke="#0078D4" stroke-width="5"/>
-            <text x="50" y="60" font-family="Arial, sans-serif" font-size="40" font-weight="bold" text-anchor="middle" fill="#0078D4">R</text>
-          </svg>
+    <main class="coming-soon-container">
+        <div class="liquid-glass-bg"></div>
+        <div class="content">
+            <h1 class="coming-soon-text">Coming Soon</h1>
+            <div class="logo-section">
+                <div class="r-logo">
+                    <svg aria-hidden="true" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="50" cy="50" r="45" fill="none" stroke="#0078D4" stroke-width="5"></circle>
+                        <text x="50" y="60" font-family="Arial, sans-serif" font-size="40" font-weight="bold" text-anchor="middle" fill="#0078D4">R</text>
+                    </svg>
+                </div>
+                <span class="fluent-text">-Fluent</span>
+                <span class="sr-only">R-Fluent</span>
+            </div>
         </div>
-        <span class="fluent-text">-Fluent</span>
-      </div>
-    </div>
-  </main>
+    </main>
 
-  <style>
-    :global(body) {
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%);
-      height: 100vh;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+    <style>
+        :global(body) {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-    .coming-soon-container {
-      position: relative;
-      width: 100vw;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 1;
-    }
+        .coming-soon-container {
+            position: relative;
+            width: 100vw;
+            min-height: 100dvh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+        }
 
-    .liquid-glass-bg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: 
-        radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
-        radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.2) 0%, transparent 50%);
-      animation: liquidFlow 20s ease-in-out infinite;
-      filter: blur(10px);
-      opacity: 0.8;
-    }
+        .liquid-glass-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.2) 0%, transparent 50%);
+            animation: liquidFlow 20s ease-in-out infinite;
+            filter: blur(10px);
+            opacity: 0.8;
+        }
 
-    @keyframes liquidFlow {
-      0%, 100% { transform: translate(0, 0) rotate(0deg); }
-      33% { transform: translate(30px, -30px) rotate(120deg); }
-      66% { transform: translate(-20px, 20px) rotate(240deg); }
-    }
+        @keyframes liquidFlow {
+            0%,
+            100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            33% {
+                transform: translate(30px, -30px) rotate(120deg);
+            }
+            66% {
+                transform: translate(-20px, 20px) rotate(240deg);
+            }
+        }
 
-    .content {
-      text-align: center;
-      z-index: 2;
-      position: relative;
-    }
+        .content {
+            text-align: center;
+            z-index: 2;
+            position: relative;
+        }
 
-    .coming-soon-text {
-      font-size: 4rem;
-      font-weight: 300;
-      color: rgba(255, 255, 255, 0.9);
-      text-shadow: 
-        0 0 10px rgba(255, 255, 255, 0.2),
-        0 0 20px rgba(255, 255, 255, 0.1),
-        0 0 30px rgba(120, 219, 255, 0.1);
-      margin-bottom: 2rem;
-      letter-spacing: 0.1em;
-      backdrop-filter: blur(10px);
-      background: rgba(255, 255, 255, 0.05);
-      padding: 1rem 2rem;
-      border-radius: 20px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
+        .coming-soon-text {
+            font-size: 4rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow:
+                0 0 10px rgba(255, 255, 255, 0.2),
+                0 0 20px rgba(255, 255, 255, 0.1),
+                0 0 30px rgba(120, 219, 255, 0.1);
+            margin-bottom: 2rem;
+            letter-spacing: 0.1em;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1rem 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
 
-    .logo-section {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      font-size: 2.5rem;
-      font-weight: bold;
-      color: rgba(255, 255, 255, 0.9);
-    }
+        .logo-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: rgba(255, 255, 255, 0.9);
+        }
 
-    .r-logo {
-      width: 80px;
-      height: 80px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      backdrop-filter: blur(10px);
-      background: rgba(0, 120, 212, 0.1);
-      border-radius: 50%;
-      border: 1px solid rgba(0, 120, 212, 0.2);
-      box-shadow: 
-        0 8px 32px rgba(0, 120, 212, 0.1),
-        inset 0 1px 0 rgba(255, 255, 255, 0.1);
-    }
+        .r-logo {
+            width: 80px;
+            height: 80px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+            background: rgba(0, 120, 212, 0.1);
+            border-radius: 50%;
+            border: 1px solid rgba(0, 120, 212, 0.2);
+            box-shadow:
+                0 8px 32px rgba(0, 120, 212, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
 
-    .r-logo svg {
-      filter: drop-shadow(0 0 10px rgba(0, 120, 212, 0.3));
-    }
+        .r-logo svg {
+            filter: drop-shadow(0 0 10px rgba(0, 120, 212, 0.3));
+        }
 
-    .fluent-text {
-      background: linear-gradient(45deg, #0078D4, #106EBE);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
+        .fluent-text {
+            background: linear-gradient(45deg, #0078d4, #106ebe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
 
-    @media (max-width: 768px) {
-      .coming-soon-text {
-        font-size: 2.5rem;
-      }
-      
-      .logo-section {
-        font-size: 1.8rem;
-      }
-      
-      .r-logo {
-        width: 60px;
-        height: 60px;
-      }
-    }
-  </style>
-</Layout>---
-// src/pages/index.astro
-import Layout from '../layouts/Layout.astro';
----
+        /* Visually hidden utility for screen reader-only text */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
 
-<Layout title="R-Fluent - Coming Soon">
-  <main class="coming-soon-container">
-    <div class="liquid-glass-bg"></div>
-    <div class="content">
-      <h1 class="coming-soon-text">Coming Soon</h1>
-      <div class="logo-section">
-        <div class="r-logo">
-          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="50" cy="50" r="45" fill="none" stroke="#0078D4" stroke-width="5"/>
-            <text x="50" y="60" font-family="Arial, sans-serif" font-size="40" font-weight="bold" text-anchor="middle" fill="#0078D4">R</text>
-          </svg>
-        </div>
-        <span class="fluent-text">-Fluent</span>
-      </div>
-    </div>
-  </main>
+        @media (max-width: 768px) {
+            .coming-soon-text {
+                font-size: 2.5rem;
+            }
 
-  <style>
-    :global(body) {
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%);
-      height: 100vh;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+            .logo-section {
+                font-size: 1.8rem;
+            }
 
-    .coming-soon-container {
-      position: relative;
-      width: 100vw;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 1;
-    }
+            .r-logo {
+                width: 60px;
+                height: 60px;
+            }
+        }
 
-    .liquid-glass-bg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: 
-        radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
-        radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.2) 0%, transparent 50%);
-      animation: liquidFlow 20s ease-in-out infinite;
-      filter: blur(10px);
-      opacity: 0.8;
-    }
+        /* Respect reduced motion preferences */
+        @media (prefers-reduced-motion: reduce) {
+            .liquid-glass-bg {
+                animation: none;
+            }
+        }
 
-    @keyframes liquidFlow {
-      0%, 100% { transform: translate(0, 0) rotate(0deg); }
-      33% { transform: translate(30px, -30px) rotate(120deg); }
-      66% { transform: translate(-20px, 20px) rotate(240deg); }
-    }
-
-    .content {
-      text-align: center;
-      z-index: 2;
-      position: relative;
-    }
-
-    .coming-soon-text {
-      font-size: 4rem;
-      font-weight: 300;
-      color: rgba(255, 255, 255, 0.9);
-      text-shadow: 
-        0 0 10px rgba(255, 255, 255, 0.2),
-        0 0 20px rgba(255, 255, 255, 0.1),
-        0 0 30px rgba(120, 219, 255, 0.1);
-      margin-bottom: 2rem;
-      letter-spacing: 0.1em;
-      backdrop-filter: blur(10px);
-      background: rgba(255, 255, 255, 0.05);
-      padding: 1rem 2rem;
-      border-radius: 20px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .logo-section {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      font-size: 2.5rem;
-      font-weight: bold;
-      color: rgba(255, 255, 255, 0.9);
-    }
-
-    .r-logo {
-      width: 80px;
-      height: 80px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      backdrop-filter: blur(10px);
-      background: rgba(0, 120, 212, 0.1);
-      border-radius: 50%;
-      border: 1px solid rgba(0, 120, 212, 0.2);
-      box-shadow: 
-        0 8px 32px rgba(0, 120, 212, 0.1),
-        inset 0 1px 0 rgba(255, 255, 255, 0.1);
-    }
-
-    .r-logo svg {
-      filter: drop-shadow(0 0 10px rgba(0, 120, 212, 0.3));
-    }
-
-    .fluent-text {
-      background: linear-gradient(45deg, #0078D4, #106EBE);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    @media (max-width: 768px) {
-      .coming-soon-text {
-        font-size: 2.5rem;
-      }
-      
-      .logo-section {
-        font-size: 1.8rem;
-      }
-      
-      .r-logo {
-        width: 60px;
-        height: 60px;
-      }
-    }
-  </style>
+        /* Guard backdrop-filter usage for graceful fallback */
+        @supports (backdrop-filter: blur(10px)) or (-webkit-backdrop-filter: blur(10px)) {
+            .coming-soon-text {
+                backdrop-filter: blur(10px);
+            }
+            .r-logo {
+                backdrop-filter: blur(10px);
+            }
+        }
+    </style>
 </Layout>
