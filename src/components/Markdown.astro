@@ -20,16 +20,15 @@ const lightTheme = 'min-light';
 // 🧩 Custom markedShiki plugin that embeds both themes
 const marked = new Marked().use(
     markedShiki({
-        highlight(code, lang) {
+        highlight(code: string, lang: string) {
             const dark = highlighter.codeToHtml(code, { lang, theme: darkTheme });
             const light = highlighter.codeToHtml(code, { lang, theme: lightTheme });
-            // Inject both versions, toggle via CSS
             return `
-        <pre class="code-block">
-          <div class="code-theme code-dark">${dark}</div>
-          <div class="code-theme code-light">${light}</div>
-        </pre>
-      `;
+                        <pre class="code-block">
+                        <div class="code-theme code-dark">${dark}</div>
+                        <div class="code-theme code-light">${light}</div>
+                        </pre>
+                        `;
         }
     })
 );
