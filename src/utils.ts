@@ -1,10 +1,7 @@
 import blobshape from 'blobshape';
 import { uniqueNamesGenerator, adjectives, animals } from 'unique-names-generator';
 
-// Note: this only works on the server side
-export function getNetlifyContext() {
-    return process.env.CONTEXT;
-}
+// Note: add any platform context helpers here if needed
 
 export function randomInt(min: number, max: number) {
     return Math.floor(Math.random() * (max - min + 1) + min);
@@ -42,16 +39,22 @@ export function generateBlob(parameters?: any) {
     return { parameters: { ...parameters, seed }, svgPath };
 }
 
-export function cacheHeaders(maxAgeDays = 365, cacheTags?: string[]): Record<string, string> {
-    // As far as the browser is concerned, it must revalidate on every request.
-    // However, Netlify CDN is told to keep the content cached for up to maxAgeDays (note: new deployment bust the cache by default).
-    // We're also setting cache tags to be able to later purge via API (see: https://www.netlify.com/blog/cache-tags-and-purge-api-on-netlify/)
-    const headers = {
-        'Cache-Control': 'public, max-age=0, must-revalidate', // Tell browsers to always revalidate
-        'Netlify-CDN-Cache-Control': `public, max-age=${maxAgeDays * 86_400}, must-revalidate` // Tells Netlify CDN the max allwed cache duration
+export function cacheHeaders(maxAgeDays = 365): Record<string, string> {
+    // Tell browsers to always revalidate; platform CDN headers removed
+    return {
+        'Cache-Control': 'public, max-age=0, must-revalidate'
     };
-    if (cacheTags?.length > 0) headers['Cache-Tag'] = cacheTags.join(',');
-    return headers;
 }
 
-export const uploadDisabled = import.meta.env.PUBLIC_DISABLE_UPLOADS?.toLowerCase() === 'true';
+function readPublicFlag(): boolean {
+    try {
+        // Avoid TypeScript parsing import.meta by accessing via eval
+        // eslint-disable-next-line no-eval
+        const meta = (eval('import.meta') as any);
+        const v = meta?.env?.PUBLIC_DISABLE_UPLOADS;
+        if (typeof v === 'string') return v.toLowerCase() === 'true';
+    } catch { }
+    return false;
+}
+
+export const uploadDisabled = readPublicFlag();

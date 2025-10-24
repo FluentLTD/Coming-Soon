@@ -8,21 +8,68 @@ interface Props {
     class?: string;
 }
 
-const { content, class: className } = Astro.props;
+const { content, class: className = '' } = Astro.props;
 
+// 🧠 Load Shiki highlighter once
 const highlighter = await highlighterPromise;
-const html = await new Marked()
-    .use(
-        markedShiki({
-            highlight(code, lang, props) {
-                return highlighter.codeToHtml(code, {
-                    lang,
-                    theme: 'min-dark'
-                });
-            }
-        })
-    )
-    .parse(content);
+
+// 🌓 Preload both themes
+const darkTheme = 'min-dark';
+const lightTheme = 'min-light';
+
+// 🧩 Custom markedShiki plugin that embeds both themes
+const marked = new Marked().use(
+    markedShiki({
+        highlight(code: string, lang: string) {
+            const dark = highlighter.codeToHtml(code, { lang, theme: darkTheme });
+            const light = highlighter.codeToHtml(code, { lang, theme: lightTheme });
+            return `
+                        <pre class="code-block">
+                        <div class="code-theme code-dark">${dark}</div>
+                        <div class="code-theme code-light">${light}</div>
+                        </pre>
+                        `;
+        }
+    })
+);
+
+const html = await marked.parse(content);
 ---
 
 <div class:list={['markdown', className]} set:html={html} />
+
+<style>
+    .markdown {
+        font-size: 1rem;
+        line-height: 1.7;
+    }
+
+    .markdown pre {
+        margin: 1rem 0;
+        border-radius: 10px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    /* 🌓 Theme containers */
+    .code-theme {
+        display: none;
+    }
+    @media (prefers-color-scheme: dark) {
+        .code-theme.code-dark {
+            display: block;
+        }
+    }
+    @media (prefers-color-scheme: light) {
+        .code-theme.code-light {
+            display: block;
+        }
+    }
+
+    /* Optional: add glowing border effect for dark mode */
+    @media (prefers-color-scheme: dark) {
+        .markdown pre {
+            box-shadow: 0 0 12px rgba(0, 255, 255, 0.15);
+        }
+    }
+</style>

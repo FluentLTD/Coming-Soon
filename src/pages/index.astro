@@ -1,13 +1,13 @@
 ---
 // src/pages/index.astro
 import Layout from '../layouts/Layout.astro';
+import FloatingFooter from '../components/FloatingFooter.astro';
 ---
 
 <Layout title="R-Fluent - Coming Soon">
     <main class="coming-soon-container">
         <div class="liquid-glass-bg"></div>
         <div class="content">
-            <h1 class="coming-soon-text">Coming Soon</h1>
             <div class="logo-section">
                 <div class="r-logo">
                     <svg aria-hidden="true" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -18,6 +18,7 @@ import Layout from '../layouts/Layout.astro';
                 <span class="fluent-text">-Fluent</span>
                 <span class="sr-only">R-Fluent</span>
             </div>
+            <h1 class="coming-soon-text">Coming Soon</h1>
         </div>
     </main>
 
@@ -177,4 +178,5 @@ import Layout from '../layouts/Layout.astro';
             }
         }
     </style>
+    <FloatingFooter />
 </Layout>
